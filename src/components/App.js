@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Panel, CardsList } from './';
+import { Jumbotron } from 'reactstrap';
+
 class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h1>File manager</h1>
+        <div style={{padding:'10px',boxShadow:'0px 1px 6px #071F53'}}>
+          <h2>File manager</h2>
         </div>
         <Panel />
         <CardsList />

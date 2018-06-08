@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Input } from 'reactstrap';
 import {connect} from 'react-redux';
 
 class FileInput extends Component{
@@ -39,7 +40,7 @@ class FileInput extends Component{
   render(){
     return(
       <span>
-        <input type="file"
+        <Input type="file"
         name="myFile"
         onChange={this.uploadFile} />
       </span>

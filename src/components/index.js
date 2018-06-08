@@ -1,8 +1,8 @@
-import Card from './Card';
+import FileCard from './FileCard';
 import CardsList from './CardsList';
 import Panel from './Panel';
 import FileInput from './FileInput';
 
 export {
-  Card, CardsList, Panel, FileInput
+  FileCard, CardsList, Panel, FileInput
 }

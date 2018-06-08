@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {addFile} from '../AC'
-import {FileInput} from './'
+import {addFile} from '../AC';
+import {FileInput} from './';
+
+import { Alert,Button,Jumbotron,Input,Form } from 'reactstrap';
 
 class Panel extends Component{
   state = {
@@ -32,15 +34,16 @@ class Panel extends Component{
   render(){
     const {error} = this.state;
     return(
-      <div>
-        <h3>Panel</h3>
-        <FileInput
-          setFileInfo={this.setFileInfo}
-          setError={this.setError}
-        />
-        <button onClick={this.handleAdd}>Добавить</button>
+      <div style={{padding:'20px'}}>
+        <Form inline style={{margin:'10px'}}>
+          <FileInput
+            setFileInfo={this.setFileInfo}
+            setError={this.setError}
+          />
+          <Button color="success" onClick={this.handleAdd}>Добавить</Button>
+        </Form>
         {
-          error ? <p> {error} </p> : ''
+          error ? <Alert color="danger"> {error} </Alert> : ''
         }
       </div>
     )
