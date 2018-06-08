@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Input } from 'reactstrap';
 import {connect} from 'react-redux';
-
+/**
+* Дочерний компонент для Panel.
+* Включает функционал добавления файла
+*/
 class FileInput extends Component{
   uploadFile = (e) => {
     const {filesList} = this.props;
@@ -31,9 +34,13 @@ class FileInput extends Component{
       // cut "data:image/jpeg;base64" of content
       const sliceContent = content.split(',')
       self.props.setFileInfo(infoFile.name, infoFile.size, sliceContent[1]);
+      self.props.setLoader();
     };
     reader.onerror = function(){
       self.props.setError('При загрузке данных произошла ошибка');
+    }
+    reader.onloadstart = function(){
+      self.props.setLoader();
     }
     infoFile && reader.readAsDataURL(e.target.files[0]);
   }

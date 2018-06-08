@@ -3,14 +3,18 @@ import {connect} from 'react-redux';
 import {addFile} from '../AC';
 import {FileInput} from './';
 
-import { Alert,Button,Jumbotron,Input,Form } from 'reactstrap';
-
+import { BarLoader } from 'react-spinners';
+import { Alert,Button,Input,Form } from 'reactstrap';
+/**
+* Верхняя панель, включающая в себя загрузку и добавление файла.
+*/
 class Panel extends Component{
   state = {
     name : '',
     size : '',
     content : '',
     error : '',
+    loader : false
   }
   setFileInfo = (name, size, content) => {
     this.setState({
@@ -24,6 +28,11 @@ class Panel extends Component{
       error : text
     })
   }
+  setLoader = () => {
+    this.setState({
+      loader: !this.state.loader
+    })
+  }
   handleAdd = () => {
     const {name, size, content} = this.state;
     if(name && size && content){
@@ -32,16 +41,23 @@ class Panel extends Component{
     this.setState({name:'',size:'',content:''})
   }
   render(){
-    const {error} = this.state;
+    const {error,loader} = this.state;
     return(
       <div style={{padding:'20px'}}>
         <Form inline style={{margin:'10px'}}>
           <FileInput
             setFileInfo={this.setFileInfo}
             setError={this.setError}
+            setLoader={this.setLoader}
           />
           <Button color="success" onClick={this.handleAdd}>Добавить</Button>
         </Form>
+        <div className='sweet-loading' style={{padding:'0 20px'}}>
+        <BarLoader
+          color={'#123abc'}
+          loading={loader}
+        />
+      </div>
         {
           error ? <Alert color="danger"> {error} </Alert> : ''
         }

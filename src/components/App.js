@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Panel, CardsList } from './';
-import { Jumbotron } from 'reactstrap';
 
 class App extends Component {
   render() {

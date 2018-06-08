@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { FileCard } from './'
 import {connect} from 'react-redux';
+/**
+* Компонент обертка для списка загруженных файлов
+*/
 class CardsList extends Component {
   render(){
     const {filesList} = this.props;
